@@ -69,8 +69,16 @@ body {
     font-weight: 600;
     cursor: pointer;
     font-size: 0.95rem;
-    /* This makes the color change smooth (0.3 seconds) */
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
+    
+    /* ADD THESE TWO LINES */
+    text-decoration: none;    /* Removes underline from <a> */
+    display: inline-block;     /* Allows <a> to respect padding/height */
+    
+    background-color: transparent;
+    color: #57068c;
+    border: 2px solid #57068c;
+    line-height: 1;            /* Keeps text centered vertically */
 }
 
 /* 2. ACCOUNT & LANGUAGE (Outline Style) */
@@ -126,12 +134,28 @@ body {
     /* This centers the "interest" of the photo (the middle 300px) */
     object-position: center 85%; 
 }
-
-.banner-alignment-wrapper {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 20px 20px 20px 370px; /* Matches your sidebar offset */
+.h2{
+    color: #fff;
+}
+.banner_sub {
+    height: 6rem;
+    width: 100%;
+    background-color: #57068c;
+    
+    /* THE CENTERING POWERHOUSE */
+    display: flex;           /* Enables flexbox */
+    align-items: center;     /* Centers content vertically (Height) */
+    justify-content: center; /* Centers content horizontally (Width) */
+    
     box-sizing: border-box;
+    padding: 0 20px;         /* Adds a safety gap so text doesn't hit screen edges */
+}
+
+.banner_sub h2 {
+    color: white;
+    margin: 0;               /* CRITICAL: Removes default browser top/bottom margins */
+    text-align: center;
+    font-size: 1.4rem;       /* Adjust based on your preference */
 }
 
 .logo {
@@ -159,8 +183,8 @@ body {
     flex: 0 0 320px;
     background: white;
     padding: 25px;
-    border: 1px solid #ccc;
-
+    border: 1px solid #333;
+    border-radius: 0.6rem;
     /* Sticky Logic */
     position: sticky;
     top: 90px; /* Aligns with the bottom of the fixed header */
@@ -224,7 +248,8 @@ body {
 /* Card Component */
 .listing-card {
     background: white;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
+    border-radius: 1rem;
     padding: 10px;
     text-align: center;
 }
@@ -306,5 +331,21 @@ body {
 }
 
 /* UI Buttons */
-.btn-primary { background: #57068c; color: white; padding: 10px 20px; border: none; cursor: pointer; }
-.btn-apply { width: 100%; padding: 10px; margin-top: 10px; background: #eee; border: 1px solid #999; cursor: pointer; }
+.btn-primary { 
+    background: #57068c; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 0.5rem;
+    cursor: pointer; 
+    align-items: center;
+}
+.btn-apply { 
+    width: 100%; 
+    padding: 10px; 
+    margin-top: 10px; 
+    background: #eee; 
+    border: 1px solid #999; 
+    cursor: pointer; 
+    align-items: center;
+}

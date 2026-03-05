@@ -21,7 +21,7 @@
         </div>
 
         <div class="header-actions">
-            <button class="btn-sell">Sell Swipe</button>
+            <a class="btn-sell" href="sell.html">Sell</a>
             <button class="btn-account">Account</button>
             <button class="btn-lang">Language</button>
         </div>
@@ -31,7 +31,7 @@
             <img src="media/Lipton-Horizontal.jpg" alt="Dining Hall Banner" class="full-width-banner">
         </div>
 
-        <div class="banner-alignment-wrapper">
+        <div class="banner_sub">
             <h2>Looking for Meal Swipes? The following postings should interest you:</h2>
         </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="page-layout">
         <aside class="sidebar">
             <section class="filter-group">
-                <h3>Sort By</h3>
+                <h3>List By</h3>
                 <label>Swipe Amount:</label>
                 <select id="sort-swipes" class="dropdown-select">
                     <option value="default">Select...</option>
@@ -62,12 +62,12 @@
             <section class="filter-group">
                 <h3>Filters</h3>
                 <label>Swipe Amount: 0~<span id="swipe-val">100</span></label>
-                <input type="range" id="swipe-range" class="slider" min="0" max="100" value="50">
+                <input type="range" id="swipe-range" class="slider" min="0" max="100" value="10">
                 
                 <label>Price Range: $0~<span id="price-val">1500</span></label>
-                <input type="range" id="price-range" class="slider" min="0" max="1500" value="750">
+                <input type="range" id="price-range" class="slider" min="0" max="1500" value="150">
                 
-                <button class="btn-apply">Apply Filters</button>
+                <button class="btn-lang">Apply Filters</button>
             </section>
         </aside>
 
