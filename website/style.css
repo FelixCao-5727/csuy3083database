@@ -312,8 +312,191 @@ body {
     grid-template-columns: 1fr;
     gap: 15px;
 }
+/* --- Horizontal List Layout (Selling/Postings Page) --- */
+.listing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+}
 
-/* Card Component */
+.listing-row {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    gap: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.listing-row:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Horizontal Columns */
+.col {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.col.location { flex: 1.5; } /* Give more room to hall name */
+
+.col .label {
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.col .val {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Section Titles */
+.section-title {
+    margin: 30px 20px 10px;
+    color: #57068c;
+    font-size: 1.2rem;
+    border-left: 4px solid #57068c;
+    padding-left: 10px;
+}
+
+/* Ongoing Buyer Indicator */
+.buyer-indicator {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 5px;
+    background: #f0f7ff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Button Grouping for Ongoing */
+.button-group {
+    display: flex;
+    gap: 8px;
+}
+
+/* The Green Confirm Button */
+.btn-confirm {
+    background-color: #2a9d8f; /* Emerald Green */
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-confirm:hover {
+    background-color: #21867a;
+}
+
+/* Visual cues for Sold items */
+.sold-fade {
+    opacity: 0.8;
+    background-color: #fafafa;
+}
+
+/* Color indicator for ongoing border */
+.border-ongoing {
+    border-left: 6px solid #2a9d8f;
+}
+
+.price { color: #57068c; font-size: 1.1rem; font-weight: 800; }
+/* Standard Discount Text */
+.discount-text {
+    color: #d32f2f; /* Red to stand out */
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+/* Subtler version for Sold items */
+.strike-sold {
+    color: #999; /* Grayed out */
+    font-weight: 600;
+}
+
+/* Ensure all columns align properly */
+.listing-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px; /* Consistent spacing */
+}
+.buyer-indicator {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 5px;
+    background: #f0f7ff; /* Light blue background for buyer info */
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.buyer-rating {
+    color: #0077cc; /* Blue color for buyer rating */
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-left: 1px solid #ccc;
+    padding-left: 6px;
+}
+
+/* Styling for the rating you received */
+.stars-received {
+    color: #ffb400; /* Gold */
+    font-size: 1rem;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stars-received .val {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* Ensure the performance column fits in the row */
+.col.performance {
+    flex: 1.2;
+    border-left: 1px solid #eee;
+    padding-left: 15px;
+}
+
+/* Mobile check: make sure rows don't get too cramped */
+@media (max-width: 768px) {
+    .listing-row {
+        flex-wrap: wrap;
+    }
+    .col {
+        flex: 1 0 45%; /* Two columns per 'row' on mobile */
+        margin-bottom: 10px;
+    }
+}
+
+/* Ensure the star in buyer rating is also colored */
+.buyer-rating::after {
+    content: ""; /* If you prefer to keep the star inside the text, leave this empty */
+}
+
+.col {
+    flex: 1; /* Standard column width */
+}
+
+.col.location {
+    flex: 1.5; /* Extra room for Hall names and Buyer info */
+}
 /* 1. The Parent Container */
 .listing-card {
     position: relative; /* Crucial: anchors the tag to this box */
@@ -416,11 +599,24 @@ body {
     color: white;
     text-transform: uppercase;
 }
+.status-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    width: fit-content;
+}
+.status-active { background: #e8f5e9; color: #2e7d32; }
+.status-pending { background: #fff3e0; color: #ef6c00; }
+.status-sold { background: #f5f5f5; color: #757575; }
 
 /* Colors */
 .status-hi { background-color: #e63946; } /* Vibrant Red */
 .status-med { background-color: #f4a261; } /* Sandy Orange */
 .status-lo { background-color: #2a9d8f; } /* Teal Green */
+
+
 
 /* --- Desktop Layout (1024px+) --- */
 @media (min-width: 1024px) {
@@ -462,6 +658,7 @@ body {
     }
 }
 
+
 /* UI Buttons */
 .btn-primary { 
     background: #57068c; 
@@ -480,4 +677,24 @@ body {
     border: 1px solid #999; 
     cursor: pointer; 
     align-items: center;
+}
+/* Small inputs for the Posting Bar */
+.post-input.small { width: 130px; }
+.post-input.tiny { width: 80px; }
+
+/* The Modify Button */
+.btn-modify {
+    background-color: transparent;
+    border: 1.5px solid #57068c;
+    color: #57068c;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-modify:hover {
+    background-color: #57068c;
+    color: white;
 }
