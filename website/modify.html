@@ -14,15 +14,24 @@
                 <span class="logo-text">NYU</span>
             </div>
         </div>
-        
         <div class="title-box">
             <h1>Swipe Marketplace</h1>
         </div>
-
         <div class="header-actions">
-            <a class="btn-sell" href="buy.html">Buy</a>
-            <button class="btn-account">Account</button>
-            <button class="btn-lang">Language</button>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="nav-menu">
+                <div class="nav-links">
+                    <a class="btn-main" href="sell.html">Sell</a>
+                    <button class="btn-main">Account</button>
+                    <button class="btn-main">Language</button>
+                </div>
+            </nav>
         </div>
     </header>
     <main class="content-area modify-full-width">
@@ -40,12 +49,12 @@
                         <option value="lipton">Lipton Hall</option>
                         <option value="weinstein">Weinstein Hall</option>
                     </select>
-                    <div class="buyer-indicator">👤 Buyer: <strong>ml123</strong></div>
+                    <div class="buyer-indicator">Buyer: <strong>ml123</strong></div>
                 </div>
 
                 <div class="col amount">
                     <span class="label">Amount</span>
-                    <input type="number" class="edit-input tiny" value="4">
+                    <input type="number" class="edit-input small" value="4">
                 </div>
 
                 <div class="col cost">
@@ -75,7 +84,7 @@
                     <span class="label">Update</span>
                     <div class="button-group">
                         <button class="btn-confirm">Save</button>
-                        <button class="btn-modify" style="border-color: #999; color: #999;">Cancel</button>
+                        <button class="btn-cancel">Cancel</button>
                     </div>
                 </div>
             </article>
@@ -94,7 +103,7 @@
                 
                 <div class="col amount">
                     <span class="label">Amount</span>
-                    <input type="number" class="edit-input tiny" value="2">
+                    <input type="number" class="edit-input small" value="2">
                 </div>
 
                 <div class="col cost">
@@ -123,13 +132,11 @@
                     <span class="label">Manage</span>
                     <div class="button-group">
                         <button class="btn-confirm">Save</button>
-                        <button class="btn-delete-icon">🗑️</button>
+                        <button class="btn-cancel">Delete</button>
                     </div>
                 </div>
             </article>
         </div>
     </main>
-</body>
-</html>
 </body>
 </html>
