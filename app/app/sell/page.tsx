@@ -115,11 +115,9 @@ export default function SellPage() {
       }
       const supabase = createClient()
 
-      // Ensure a public.user row exists (handles accounts created before the trigger)
-      await supabase.from("user").upsert(
-        { net_id: userId },
-        { onConflict: "net_id", ignoreDuplicates: true }
-      )
+      // Ensure a public.user row exists (SECURITY DEFINER bypasses RLS)
+      const { error: userErr } = await supabase.rpc("ensure_current_user_row")
+      if (userErr) throw new Error(`Could not create user profile: ${userErr.message}`)
 
       const { error } = await supabase.from("listing").insert({
         seller_net_id: userId,
