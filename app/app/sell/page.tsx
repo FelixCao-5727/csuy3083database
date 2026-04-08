@@ -6,7 +6,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Select } from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
 import { createClient } from "@/utils/supabase/client"
@@ -180,41 +180,43 @@ export default function SellPage() {
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                     <div className="col-span-2 sm:col-span-1 lg:col-span-2">
                       <label className="block text-xs text-zinc-500 mb-1">Location *</label>
-                      <Select
-                        value={form.locationId}
-                        onChange={(e) => setForm({ ...form, locationId: e.target.value })}
-                        className="w-full"
-                      >
-                        <option value="" disabled>Select location…</option>
-                        {lookups?.locations.map((l) => (
-                          <option key={l.location_id} value={l.location_id}>{l.location}</option>
-                        ))}
+                      <Select value={form.locationId} onValueChange={(v) => setForm({ ...form, locationId: v })}>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select location…" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {lookups?.locations.map((l) => (
+                            <SelectItem key={l.location_id} value={l.location_id}>{l.location}</SelectItem>
+                          ))}
+                        </SelectContent>
                       </Select>
                     </div>
                     <div>
                       <label className="block text-xs text-zinc-500 mb-1">Type</label>
-                      <Select
-                        value={form.typeId}
-                        onChange={(e) => setForm({ ...form, typeId: e.target.value })}
-                        className="w-full"
-                      >
-                        <option value="">Any type</option>
-                        {lookups?.types.map((t) => (
-                          <option key={t.type_id} value={t.type_id}>{t.type}</option>
-                        ))}
+                      <Select value={form.typeId} onValueChange={(v) => setForm({ ...form, typeId: v })}>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Any type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="">Any type</SelectItem>
+                          {lookups?.types.map((t) => (
+                            <SelectItem key={t.type_id} value={t.type_id}>{t.type}</SelectItem>
+                          ))}
+                        </SelectContent>
                       </Select>
                     </div>
                     <div>
                       <label className="block text-xs text-zinc-500 mb-1">Urgency</label>
-                      <Select
-                        value={form.urgencyId}
-                        onChange={(e) => setForm({ ...form, urgencyId: e.target.value })}
-                        className="w-full"
-                      >
-                        <option value="">None</option>
-                        {lookups?.urgencies.map((u) => (
-                          <option key={u.urgency_id} value={u.urgency_id}>{u.urgency}</option>
-                        ))}
+                      <Select value={form.urgencyId} onValueChange={(v) => setForm({ ...form, urgencyId: v })}>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="None" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="">None</SelectItem>
+                          {lookups?.urgencies.map((u) => (
+                            <SelectItem key={u.urgency_id} value={u.urgency_id}>{u.urgency}</SelectItem>
+                          ))}
+                        </SelectContent>
                       </Select>
                     </div>
                     <div>

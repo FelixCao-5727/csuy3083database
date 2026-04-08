@@ -6,7 +6,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Select } from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Skeleton } from "@/components/ui/skeleton"
 import { createClient } from "@/utils/supabase/client"
@@ -127,16 +127,17 @@ export default function BuyPage() {
             </p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
-            <Select
-              className="w-44 text-sm h-9"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as SortOption)}
-            >
-              <option value="newest">Newest First</option>
-              <option value="price_asc">Price: Low to High</option>
-              <option value="price_desc">Price: High to Low</option>
-              <option value="amount_asc">Amount: Low to High</option>
-              <option value="amount_desc">Amount: High to Low</option>
+            <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
+              <SelectTrigger className="w-44 text-sm h-9">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="newest">Newest First</SelectItem>
+                <SelectItem value="price_asc">Price: Low to High</SelectItem>
+                <SelectItem value="price_desc">Price: High to Low</SelectItem>
+                <SelectItem value="amount_asc">Amount: Low to High</SelectItem>
+                <SelectItem value="amount_desc">Amount: High to Low</SelectItem>
+              </SelectContent>
             </Select>
             <Button
               variant={showFilters ? "default" : "outline"}

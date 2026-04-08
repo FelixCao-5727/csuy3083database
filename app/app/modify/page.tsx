@@ -6,7 +6,7 @@ import { motion, type Variants } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Select } from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
 import { createClient } from "@/utils/supabase/client"
@@ -246,42 +246,45 @@ export default function ModifyPage() {
                       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-4">
                         <div className="col-span-2 sm:col-span-1 lg:col-span-2">
                           <label className="block text-[10px] uppercase text-zinc-400 tracking-wider mb-1.5">Location</label>
-                          <Select
-                            value={state.locationId}
-                            onChange={(e) => setField(listing.listing_id, "locationId", e.target.value)}
-                            className="w-full"
-                          >
-                            {lookups?.locations.map((l) => (
-                              <option key={l.location_id} value={l.location_id}>{l.location}</option>
-                            ))}
+                          <Select value={state.locationId} onValueChange={(v) => setField(listing.listing_id, "locationId", v)}>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="Select location…" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {lookups?.locations.map((l) => (
+                                <SelectItem key={l.location_id} value={l.location_id}>{l.location}</SelectItem>
+                              ))}
+                            </SelectContent>
                           </Select>
                         </div>
 
                         <div>
                           <label className="block text-[10px] uppercase text-zinc-400 tracking-wider mb-1.5">Type</label>
-                          <Select
-                            value={state.typeId}
-                            onChange={(e) => setField(listing.listing_id, "typeId", e.target.value)}
-                            className="w-full"
-                          >
-                            <option value="">None</option>
-                            {lookups?.types.map((t) => (
-                              <option key={t.type_id} value={t.type_id}>{t.type}</option>
-                            ))}
+                          <Select value={state.typeId} onValueChange={(v) => setField(listing.listing_id, "typeId", v)}>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="None" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="">None</SelectItem>
+                              {lookups?.types.map((t) => (
+                                <SelectItem key={t.type_id} value={t.type_id}>{t.type}</SelectItem>
+                              ))}
+                            </SelectContent>
                           </Select>
                         </div>
 
                         <div>
                           <label className="block text-[10px] uppercase text-zinc-400 tracking-wider mb-1.5">Urgency</label>
-                          <Select
-                            value={state.urgencyId}
-                            onChange={(e) => setField(listing.listing_id, "urgencyId", e.target.value)}
-                            className="w-full"
-                          >
-                            <option value="">None</option>
-                            {lookups?.urgencies.map((u) => (
-                              <option key={u.urgency_id} value={u.urgency_id}>{u.urgency}</option>
-                            ))}
+                          <Select value={state.urgencyId} onValueChange={(v) => setField(listing.listing_id, "urgencyId", v)}>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="None" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="">None</SelectItem>
+                              {lookups?.urgencies.map((u) => (
+                                <SelectItem key={u.urgency_id} value={u.urgency_id}>{u.urgency}</SelectItem>
+                              ))}
+                            </SelectContent>
                           </Select>
                         </div>
 
